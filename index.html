@@ -165,17 +165,7 @@
         <h1>💊 高警訊藥品清單與給藥指引</h1>
         <p>藥品分類速查、針劑配製濃度與給藥速度一覽 · 資料整理自院內公告文件</p>
       </div>
-      <a class="back-link" href="#">← 返回工作台</a>
     </div>
-  </div>
-
-  <div class="toolbar">
-    <span class="toolbar-label">🔍 搜尋藥品</span>
-    <div class="search-box">
-      <span>⌕</span>
-      <input id="searchInput" type="text" placeholder="輸入藥名，例如 Morphine、Amiodarone、胰島素…">
-    </div>
-    <span class="count-pill" id="countPill">共 23 項給藥指引</span>
   </div>
 
   <!-- ================= 分類清單 ================= -->
@@ -197,7 +187,6 @@
   <div class="drug-grid" id="drugGrid">
     <!-- 由 JS 產生 -->
   </div>
-  <div class="no-result" id="noResult">查無符合的藥品，請確認拼寫或改用其他關鍵字搜尋。</div>
 
   <!-- ================= 縮寫對照 ================= -->
   <div class="section-title">
@@ -292,16 +281,8 @@ function renderDrugs(list){
       </div>`;
     drugGrid.appendChild(el);
   });
-  document.getElementById('countPill').textContent = `共 ${list.length} 項給藥指引`;
-  document.getElementById('noResult').style.display = list.length ? 'none' : 'block';
 }
 renderDrugs(drugs);
-
-document.getElementById('searchInput').addEventListener('input', (e)=>{
-  const q = e.target.value.trim().toLowerCase();
-  const filtered = drugs.filter(d => d.name.toLowerCase().includes(q) || d.brand.toLowerCase().includes(q));
-  renderDrugs(filtered);
-});
 </script>
 </body>
 </html>
